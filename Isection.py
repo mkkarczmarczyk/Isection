@@ -44,10 +44,10 @@ plate=plate.align_center(align_to=ub).align_to(other=ub, on="bottom")
 dist=0.5*(b-t_w)/2
 
 
-hole1=hole1.align_center(align_to=ub).align_to(other=ub, on="bottom").shift_section(x_offset=dist)
-hole2=hole1.align_center(align_to=ub).align_to(other=ub, on="bottom").shift_section(x_offset=-dist)
-hole3=hole2.align_center(align_to=plate).align_to(other=plate, on="top").shift_section(x_offset=dist)
-hole4=hole2.align_center(align_to=plate).align_to(other=plate, on="top").shift_section(x_offset=-dist)
+hole1=hole2.align_center(align_to=ub).align_to(other=ub, on="bottom").shift_section(x_offset=dist)
+hole2=hole2.align_center(align_to=ub).align_to(other=ub, on="bottom").shift_section(x_offset=-dist)
+hole3=hole1.align_center(align_to=plate).align_to(other=plate, on="top").shift_section(x_offset=dist)
+hole4=hole1.align_center(align_to=plate).align_to(other=plate, on="top").shift_section(x_offset=-dist)
 
 
 geom=ub+plate-hole1-hole2-hole3-hole4
