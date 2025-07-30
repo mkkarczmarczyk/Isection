@@ -1,5 +1,4 @@
 import streamlit as st
-from sectionproperties.pre import Material 
 from sectionproperties.pre.geometry import Geometry 
 from sectionproperties.analysis.section import Section 
 from sectionproperties.pre.library import i_section
