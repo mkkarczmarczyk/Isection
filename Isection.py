@@ -28,6 +28,8 @@ b_p = st.sidebar.number_input("Width", value=100.0, min_value=10.0, step=1.0)
 st.sidebar.header("Bolts")
 d_b = st.sidebar.number_input("Bolts dia", value=12.0, min_value=10.0,step=1.0)
 
+st.sidebar.header("Materials")
+fy = st.sidebar.number_input("Steel fᵧ (MPa)", value=500.0, min_value=160.0)
 
 # ──────────────────────────────────────────────────────────────
 # 1️⃣  Plot section
@@ -67,15 +69,18 @@ plt.close(fig)
 geom.create_mesh(mesh_sizes=[500])
 sec = Section(geometry=geom)
 sec.calculate_geometric_properties()
+sec.calculate_plastic_properties()
 
 
 zxx_plus, zxx_minus, _, _ = sec.get_z()
+sxx,syy=sec.get_s()
 
 
+st.subheader("Plastic Section Modulus")
 
-st.subheader("Section Modulus")
-st.write(f"Zxx+ (top fiber): {zxx_plus:.2f} mm³")
-st.write(f"Zxx− (bottom fiber): {zxx_minus:.2f} mm³")
+st.write(f"Sxx: {sxx:.2f} mm³")
 
+st.subheader("Bending Capacity")
+st.write(f"MRd: {sxx*fy/1000000:.2f} kNm")
 
 
